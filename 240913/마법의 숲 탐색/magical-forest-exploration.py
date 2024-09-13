@@ -6,12 +6,18 @@ def down(visited, r, c, R, C):
     return False
 
 def left(visited, r, c, R, C):
+    if not r and (1<c) and down(visited, r, c-1, R, C):
+        return True
+
     if (1<c) and not visited[r][c-2] and not visited[r-1][c-1] and not visited[r+1][c-1]:
         if down(visited, r, c-1, R, C):
             return True
     return False
 
 def right(visited, r, c, R, C):
+    if not r and (1<c) and down(visited, r, c-1, R, C):
+        return True
+        
     if (c<C-2) and not visited[r][c+2] and not visited[r-1][c+1] and not visited[r+1][c+1]:
         if down(visited, r, c+1, R, C):
             return True
@@ -30,13 +36,13 @@ def search(visited, r, c, R, C, idx):
         if visited[x][y]==2 or visited[x][y]==3:
             for dx, dy in [[0,1], [1,0], [-1,0], [0,-1]]:
                 nx, ny = x+dx, y+dy
-                if (2<=nx<R+2) and (0<=ny<C) and not move[nx][ny] and visited[nx][ny]:
+                if (2<nx<R+2) and (0<=ny<C) and not move[nx][ny] and visited[nx][ny]:
                     deq.append([nx, ny])
                     move[nx][ny]=1
         if visited[x][y]==1:
             for dx, dy in [[0,1], [1,0], [-1,0], [0,-1]]:
                 nx, ny = x+dx, y+dy
-                if (2<=nx<R+2) and (0<=ny<C) and not move[nx][ny] and visited[nx][ny]==3:
+                if (2<nx<R+2) and (0<=ny<C) and not move[nx][ny] and visited[nx][ny]==3:
                     deq.append([nx, ny])
                     move[nx][ny]=1
 
@@ -66,5 +72,4 @@ while(idx<len(soul)):
             else: visited = [[0]*C for _ in range(R+2)]
             idx += 1
             break
-
 print(answer)
