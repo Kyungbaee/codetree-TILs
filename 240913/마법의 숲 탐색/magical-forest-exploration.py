@@ -6,17 +6,15 @@ def down(visited, r, c, R, C):
     return False
 
 def left(visited, r, c, R, C):
-    if (r+2<=R+1) and visited[r+2][c]:
-        if (1<c) and not visited[r][c-2] and not visited[r-1][c-1] and not visited[r+1][c-1]:
-            if down(visited, r, c-1, R, C):
-                return True
+    if (1<c) and not visited[r][c-2] and not visited[r-1][c-1] and not visited[r+1][c-1]:
+        if down(visited, r, c-1, R, C):
+            return True
     return False
 
 def right(visited, r, c, R, C):
-    if (r+2<=R+1) and visited[r+2][c]:
-        if (c<C-2) and not visited[r][c+2] and not visited[r-1][c+1] and not visited[r+1][c+1]:
-            if down(visited, r, c+1, R, C):
-                return True
+    if (c<C-2) and not visited[r][c+2] and not visited[r-1][c+1] and not visited[r+1][c+1]:
+        if down(visited, r, c+1, R, C):
+            return True
     return False
 
 def search(visited, r, c, R, C, idx):
