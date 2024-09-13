@@ -56,7 +56,7 @@ while(idx<len(soul)):
         elif left(visited, r, c, R, C): r, c, exit_num = r+1, c-1, (exit_num+3)%4
         elif right(visited, r, c, R, C): r, c, exit_num = r+1, c+1, (exit_num+5)%4
         else:
-            if r > 1:
+            if r > 2:
                 for j, ss in enumerate([[r-1,c], [r,c+1], [r+1,c], [r,c-1], [r,c]]):
                     x, y = ss
                     if j==exit_num: visited[x][y]=2
@@ -66,4 +66,5 @@ while(idx<len(soul)):
             else: visited = [[0]*C for _ in range(R+2)]
             idx += 1
             break
+
 print(answer)
