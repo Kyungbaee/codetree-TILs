@@ -76,9 +76,10 @@ K, M = map(int, input().split())
 relics = [list(map(int, input().split())) for _ in range(5)]
 piece_num = deque(map(int, input().split()))
 position = [[7,4,1,8,5,2,9,6,3], [9,8,7,6,5,4,3,2,1], [3,6,9,2,5,8,1,4,7]]
-answer = 0
 
 for _ in range(K):
+    answer = 0
+
     deg, x, y = turn_relic(relics, position)
     relics = turn(relics, x, y, position[deg])
     cnt, mining_root = get_relic(relics)
@@ -90,4 +91,4 @@ for _ in range(K):
         fill_relic(relics, piece_num, mining_root)
         answer += cnt
 
-print(answer)
+    if answer: print(answer, end=' ')
