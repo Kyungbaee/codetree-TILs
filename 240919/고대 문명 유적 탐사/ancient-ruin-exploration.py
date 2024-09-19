@@ -37,7 +37,7 @@ def turn_relic(relics, position):
                 if degree > deg:
                     degree = deg
                     x, y = tx, ty
-                    
+
     return degree, x, y
 
 ## [2] 유물 획득 - 벽면 숫자 채우기
@@ -90,6 +90,8 @@ for _ in range(K):
     fill_relic(relics, piece_num, mining_root)
     answer += cnt
 
+    if not cnt: break
+    
     while cnt>0:
         cnt, mining_root = get_relic(relics)
         fill_relic(relics, piece_num, mining_root)
