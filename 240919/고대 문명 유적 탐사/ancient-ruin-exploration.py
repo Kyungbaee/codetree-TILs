@@ -29,11 +29,15 @@ def turn_relic(relics, position):
 
             elif max_cnt == cnt:
                 max_cnt = cnt
+                if degree == deg:
+                    if y == ty:
+                        if x > tx: x, y = tx, ty  
+                    if y > ty: x, y = tx, ty
 
                 if degree > deg:
                     degree = deg
                     x, y = tx, ty
-                
+                    
     return degree, x, y
 
 ## [2] 유물 획득 - 벽면 숫자 채우기
