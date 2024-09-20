@@ -25,8 +25,14 @@ def right(visited, r, c, R, C):
         if down(visited, r, c+1, R, C):
             return True
     return False
+    
+"""
+    이동한 곳이 골렘의 중앙이거나 출구 일 경우,
+    다른 모든 골렘 영역으로 이동 가능
 
-## BFS 탐색
+    이동한 곳이 골렘의 일반 영역일 경우,
+    골렘의 중앙으로만 이동 가능
+"""
 def search(visited, r, c, R, C, idx):
     max_depth = r+1
     move = [[0]*C for _ in range(R+2)]
@@ -37,8 +43,7 @@ def search(visited, r, c, R, C, idx):
         x, y = deq.popleft()
         max_depth = max(max_depth, x)
 
-        '''이동한 곳이 골렘의 중앙이거나 출구 일 경우'''
-        '''다른 모든 골렘 영역으로 이동 가능'''
+
         if visited[x][y]==2 or visited[x][y]==3:
             for dx, dy in [[0,1], [1,0], [-1,0], [0,-1]]:
                 nx, ny = x+dx, y+dy
@@ -46,8 +51,7 @@ def search(visited, r, c, R, C, idx):
                     deq.append([nx, ny])
                     move[nx][ny]=1
 
-        '''이동한 곳이 골렘의 일반 영역일 경우'''
-        '''골렘의 중앙으로만 이동 가능'''
+
         if visited[x][y]==1:
             for dx, dy in [[0,1], [1,0], [-1,0], [0,-1]]:
                 nx, ny = x+dx, y+dy
@@ -76,6 +80,13 @@ idx, answer = 0, 0
 2. 남쪽 이동 불가 및 좌측 이동 가능 시, 좌측으로 골렘 이동
 3. 우측으로만 이동 가능 시, 우측으로 골렘 이동
 4. 골렘 이동 불가 시, 가장 남쪽으로 이동
+
+[골렘의 영역]
+
+1: 출구와 골렘의 중앙을 제외한 골렘 영역
+2: 출구
+3: 골렘의 중앙
+
 """
 while(idx<len(soul)):
     c, exit_num = soul[idx]
@@ -89,9 +100,9 @@ while(idx<len(soul)):
             if r > 2:
                 for j, ss in enumerate([[r-1,c], [r,c+1], [r+1,c], [r,c-1], [r,c]]):
                     x, y = ss
-                    if j==exit_num: visited[x][y]=2     ''' 2: 출구 '''
-                    elif j==4: visited[x][y]=3          ''' 3: 골렘의 중앙 '''
-                    else: visited[x][y]=1               ''' 1: 출구와 골렘의 중앙을 제외한 골렘 영역'''
+                    if j==exit_num: visited[x][y]=2     
+                    elif j==4: visited[x][y]=3          
+                    else: visited[x][y]=1               
                 answer += search(visited, r, c, R, C, idx)
             else: visited = [[0]*C for _ in range(R+2)]
             idx += 1
