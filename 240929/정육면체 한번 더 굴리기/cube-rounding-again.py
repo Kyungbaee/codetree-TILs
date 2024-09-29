@@ -1,5 +1,8 @@
 from collections import deque
 
+'''
+BFS로 바닥판 각 칸의 점수 계산
+'''
 def fill_score(tx, ty, n):
     visited = score_map.copy()
     direction = [[0,1], [1,0], [0,-1], [-1,0]]
@@ -26,11 +29,19 @@ def solution(n, m):
     up, down, right = 4,2,1
 
     for _ in range(m-1):
+        '''
+        <주사위 방향 설정>
+        주사위에 깔린 면과 바닥판 값 비교
+        '''
         if (7-up) > dice_map[x][y]:
             d = (d+1)%4
         if (7-up) < dice_map[x][y]:
             d = (d+3)%4
 
+        '''
+        <좌표 이동>
+        주사위가 벽에 튕기지 않는 경우와 튕기는 경우
+        '''
         dx, dy = x+direction[d][0], y+direction[d][1]
         if 0<=dx<n and 0<=dy<n:
             cnt += score_map[dx][dy]
@@ -40,6 +51,9 @@ def solution(n, m):
             x, y = x+direction[d][0], y+direction[d][1]
             cnt += score_map[x][y]
         
+        '''
+        <주사위 값 재설정>
+        '''
         d_up, d_down, d_right = up, down, right
 
         if d == 0: d_up, d_right = (7-right), up
