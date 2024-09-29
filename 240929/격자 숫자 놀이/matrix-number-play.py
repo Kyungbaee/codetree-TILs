@@ -34,8 +34,6 @@ def solution(h,w):
             for j in range(max_len):
                 if j<len(d): 
                     n_map[j] = n_map[j][:i] + d[j] + n_map[j][i+1:]
-                elif max_len>len(n_map[j]): 
-                    n_map[j] += '0'
                 else:
                     n_map[j] = n_map[j][:i] + "0" + n_map[j][i+1:]
 
@@ -45,13 +43,12 @@ n_map = [ "" for _ in range(101)]
 h, w, chk = 3, 3, 1
 for i in range(3): n_map[i]=input().replace(" ","") 
 
-for idx in range(1,101):
+for idx in range(0,101):
+
     if r<=h and c<=w and int(n_map[r-1][c-1])==k:
-        print(idx-1)
+        print(idx)
         chk = 0
         break
-
-    if h>=100 or w>=100: break
 
     solution(h,w)
     
