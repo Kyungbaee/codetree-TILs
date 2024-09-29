@@ -35,18 +35,19 @@ def solution(n, m):
         if 0<=dx<n and 0<=dy<n:
             cnt += score_map[dx][dy]
             x, y = dx, dy
-            d_up, d_down, d_right = up, down, right
-
-            if d == 0: d_up, d_right = (7-right), up
-            elif d == 1: d_up, d_down = (7-down), up
-            elif d == 2: d_up, d_right = right, (7-up)
-            elif d == 3: d_up, d_down = down, (7-up) 
-            
-            up, down, right = d_up, d_down, d_right
         else:
             d = (d+2)%4
             x, y = x+direction[d][0], y+direction[d][1]
             cnt += score_map[x][y]
+        
+        d_up, d_down, d_right = up, down, right
+
+        if d == 0: d_up, d_right = (7-right), up
+        elif d == 1: d_up, d_down = (7-down), up
+        elif d == 2: d_up, d_right = right, (7-up)
+        elif d == 3: d_up, d_down = down, (7-up) 
+        
+        up, down, right = d_up, d_down, d_right
 
     return cnt
 
