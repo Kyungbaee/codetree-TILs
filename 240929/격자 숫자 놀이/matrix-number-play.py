@@ -42,17 +42,18 @@ r,c,k = map(int, input().split())
 n_map = [ "" for _ in range(100)]
 h, w, chk = 3, 3, 1
 for i in range(3): n_map[i]=input().replace(" ","") 
-    for idx in range(1,101):
-        if r<=h and c<=w and int(n_map[r-1][c-1])==k:
-            print(idx-1)
-            chk = 0
-            break
 
-        solution(h,w)
+for idx in range(1,101):
+    if r<=h and c<=w and int(n_map[r-1][c-1])==k:
+        print(idx-1)
+        chk = 0
+        break
 
-        for i in range(100):
-            if n_map[i] == "": break
-            h = i+1
-            if len(n_map[i]): w = max(w, len(n_map[i]))
-            
+    solution(h,w)
+
+    for i in range(100):
+        if n_map[i] == "": break
+        h = i+1
+        if len(n_map[i]): w = max(w, len(n_map[i]))
+
 if chk: print(-1)
