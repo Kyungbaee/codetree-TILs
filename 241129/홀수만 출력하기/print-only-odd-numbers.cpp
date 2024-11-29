@@ -10,7 +10,7 @@ int main() {
     {
         int j;
         cin >> j;
-        if(j%3==0) cout << j << "\n";
+        if(j%3==0 && j%2) cout << j << "\n";
     }
     return 0;
 }
