@@ -6,25 +6,38 @@ int main() {
     int n;
     cin >> n;
 
-    if(n>1)
+    for(int i=1; i<=n; i++)
     {
-        for(int i=0; i<n; i++)
-            cout << "* ";
+        if(i%2)
+        {
+            for(int j=n; j>i/2; j--)
+                cout << "* ";
+            cout << "\n";
+        }
+        else
+        {
+            for(int j=i/2; j>0; j--)
+                cout << "* ";
+            cout << "\n";
+        }
+
     }
-    cout << "\n*\n";
-    if(n>2)
+
+    for(int i=n; i>=1; i--)
     {
-        for(int i=0; i<n-1; i++)
-            cout << "* ";
-        cout << "\n";
-        for(int i=0; i<n-1; i++)
-            cout << "* ";
-    }
-    cout << "\n*\n";
-    if(n>1)
-    {
-        for(int i=0; i<n; i++)
-            cout << "* ";
+        if(i%2==0)
+        {
+            for(int j=i/2; j>0; j--)
+                cout << "* ";
+            cout << "\n";
+        }
+        else
+        {
+            for(int j=n; j>i/2; j--)
+                cout << "* ";
+            cout << "\n";
+        }
+
     }
 
     return 0;
