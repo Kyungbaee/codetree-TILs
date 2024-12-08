@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int dx[4] = {0,1,0,-1}, dy[4] = {1,0,-1,0};
+int dx[4] = {-1,0,1,0}, dy[4] = {0,1,0,-1};
 
 int main() {
     // 여기에 코드를 작성해주세요.
@@ -16,7 +16,7 @@ int main() {
 
     while(t--)
     {
-        int nx = r+dy[dir], ny = c+dx[dir];
+        int nx = r+dx[dir], ny = c+dy[dir];
 
         if(nx>=1 && nx<=n && ny>=1 && ny<=n)
             r = nx, c = ny;
@@ -25,6 +25,6 @@ int main() {
     }
 
     cout << r << " " << c;
-    
+
     return 0;
 }
