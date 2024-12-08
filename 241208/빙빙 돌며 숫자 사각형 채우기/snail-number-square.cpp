@@ -15,7 +15,7 @@ int main() {
 
         int nx = x+dx[dir], ny = y+dy[dir];
 
-        if(nx>=0 && nx<n && ny>=0 && ny<n && nums[nx][ny]==0)
+        if(nx>=0 && nx<n && ny>=0 && ny<m && nums[nx][ny]==0)
             x = nx, y = ny;
         else
             {
@@ -27,7 +27,7 @@ int main() {
 
     for(int i=0; i<n; i++)
     {
-        for(int j=0; j<n; j++)
+        for(int j=0; j<m; j++)
             cout << nums[i][j] << " ";
         cout << "\n";
     }
